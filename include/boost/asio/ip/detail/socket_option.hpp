@@ -87,6 +87,11 @@ public:
   {
     return !ipv4_value_;
   }
+  
+#ifdef __MVS__
+// z/OS uses AF_INET6
+#define PF_INET6 AF_INET6
+#endif
 
   // Get the level of the socket option.
   template <typename Protocol>

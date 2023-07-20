@@ -61,9 +61,18 @@ public:
   enum class flags : int
   {
     none = 0,
+#ifndef __MVS__
     restart = BOOST_ASIO_OS_DEF(SA_RESTART),
     no_child_stop = BOOST_ASIO_OS_DEF(SA_NOCLDSTOP),
     no_child_wait = BOOST_ASIO_OS_DEF(SA_NOCLDWAIT),
+#else
+    // z/OS's SA_NOCLDSTOP is 0x80000000 that can't be contained
+    // in an int, so shift-right 8 bits, it's OK because it's just
+    // an enum
+    restart = BOOST_ASIO_OS_DEF(SA_RESTART) >> 8,
+    no_child_stop = BOOST_ASIO_OS_DEF(SA_NOCLDSTOP) >> 8,
+    no_child_wait = BOOST_ASIO_OS_DEF(SA_NOCLDWAIT) >> 8,
+#endif
     dont_care = -1
   };
 

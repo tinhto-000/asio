@@ -21,6 +21,11 @@
 
 #include <boost/asio/detail/push_options.hpp>
 
+#ifdef __MVS__
+// need this in order to have IP_TTL (for z/OS 2.5 and below)
+#include <xti.h>
+#endif
+
 namespace boost {
 namespace asio {
 namespace ip {

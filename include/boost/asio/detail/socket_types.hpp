@@ -60,7 +60,8 @@
 # if (defined(__MACH__) && defined(__APPLE__)) \
    || defined(__FreeBSD__) || defined(__NetBSD__) \
    || defined(__OpenBSD__) || defined(__linux__) \
-   || defined(__EMSCRIPTEN__)
+   || defined(__EMSCRIPTEN__) || defined(__MVS__)
+   // z/OS has poll.h
 #  include <poll.h>
 # elif !defined(__SYMBIAN32__)
 #  include <sys/poll.h>

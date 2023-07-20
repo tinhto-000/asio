@@ -2279,4 +2279,10 @@
 # endif // !defined(BOOST_ASIO_DISABLE_SNPRINTF)
 #endif // !defined(BOOST_ASIO_HAS_SNPRINTF)
 
+#ifdef __MVS__
+// same values were used while porting other projects
+#define NI_MAXSERV 32
+#define NI_MAXHOST 1025
+#endif
+
 #endif // BOOST_ASIO_DETAIL_CONFIG_HPP
